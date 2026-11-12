@@ -1,0 +1,3 @@
+Technical reference: https://reference.langchain.com/python/langchain/agents/factory/create_agent
+Implementation: backend/workflow.py and backend/main.py
+Business pain points are scenario assumptions. External guidance is background, not a live integration.

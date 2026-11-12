@@ -1,62 +1,62 @@
 [
   {
+    "title": "Welcome and business context",
     "start_seconds": 0,
-    "duration_seconds": 21.36,
-    "image": "walk-1.png"
+    "duration_seconds": 25.99
   },
   {
-    "start_seconds": 21.36,
-    "duration_seconds": 17.62,
-    "image": "walk-2.png"
+    "title": "Feature tour  |  Dashboard and intake",
+    "start_seconds": 25.99,
+    "duration_seconds": 24.69
   },
   {
-    "start_seconds": 38.98,
-    "duration_seconds": 24.05,
-    "image": "walk-3.png"
+    "title": "Feature tour  |  Sources and portfolio",
+    "start_seconds": 50.68,
+    "duration_seconds": 23.47
   },
   {
-    "start_seconds": 63.03,
-    "duration_seconds": 16.78,
-    "image": "walk-4.png"
+    "title": "Use case 1  |  Run the staff assistant assessment",
+    "start_seconds": 74.15,
+    "duration_seconds": 24.28
   },
   {
-    "start_seconds": 79.81,
-    "duration_seconds": 17.36,
-    "image": "walk-5.png"
+    "title": "Observe the actual tool results",
+    "start_seconds": 98.43,
+    "duration_seconds": 23.56
   },
   {
-    "start_seconds": 97.17,
-    "duration_seconds": 20.14,
-    "image": "walk-6.png"
+    "title": "Human handoff  |  Verify and decide",
+    "start_seconds": 121.99,
+    "duration_seconds": 24.31
   },
   {
-    "start_seconds": 117.31,
-    "duration_seconds": 21.56,
-    "image": "walk-7.png"
+    "title": "Use case 2  |  Patient messages need evidence",
+    "start_seconds": 146.3,
+    "duration_seconds": 24.67
   },
   {
-    "start_seconds": 138.87,
-    "duration_seconds": 16.56,
-    "image": "walk-8.png"
+    "title": "Supply evidence and resume",
+    "start_seconds": 170.97,
+    "duration_seconds": 25.22
   },
   {
-    "start_seconds": 155.43,
-    "duration_seconds": 18.15,
-    "image": "walk-9.png"
+    "title": "Inspect the source behind a finding",
+    "start_seconds": 196.19,
+    "duration_seconds": 19.84
   },
   {
-    "start_seconds": 173.58,
-    "duration_seconds": 17.19,
-    "image": "walk-10.png"
+    "title": "Use case 3  |  A tool becomes unavailable",
+    "start_seconds": 216.03,
+    "duration_seconds": 22.17
   },
   {
-    "start_seconds": 190.77,
-    "duration_seconds": 18.68,
-    "image": "walk-11.png"
+    "title": "Retry and inspect preserved history",
+    "start_seconds": 238.2,
+    "duration_seconds": 20.68
   },
   {
-    "start_seconds": 209.45,
-    "duration_seconds": 24.15,
-    "image": "walk-12.png"
+    "title": "Monitoring audit and the model boundary",
+    "start_seconds": 258.88,
+    "duration_seconds": 30.38
   }
 ]

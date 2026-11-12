@@ -1,23 +1,35 @@
-This walkthrough uses edited captures from the running local application. The dashboard shows six synthetic healthcare cases, current review status and the three stage governance workflow. The selected persona controls which demonstration actions are available. The current mode is rule based; no live model or LangSmith session is claimed.
+Welcome and business context
+Welcome to the AI Gatekeeper application walkthrough. Imagine a healthcare team proposing an AI assistant. Governance reviewers need evidence, approved tooling and accountable decisions, but manual handoffs create gaps and delays. We will tour the workspace, then follow three real local workflows. This is an edited capture of an interactive session using synthetic data and rule based execution, not a live language model demonstration.
 
-We open the staff policy knowledge assistant. The submission declares internal data, a named owner and an approved tool. Clicking Run assessment starts the saved LangGraph workflow. The application checks the evidence inventory before moving to tool lookup and risk assessment.
+Feature tour  |  Dashboard and intake
+The dashboard brings the portfolio and review status together. New assessment opens the intake form. The requester declares an owner, purpose, data classification, tool and system version. Clinical use, patient facing output and external processing are explicit flags. These declarations determine later evidence requirements. We close the form and use seeded cases for this demonstration.
 
-The Activity tab shows the actual execution trace. Evidence inspection found the required oversight document. The lookup tool returned Northstar Assist as approved. The risk role mapped the internal use case to its policy and controls. Review preparation then paused for a human decision. These are observed local workflow events, not invented model reasoning.
+Feature tour  |  Sources and portfolio
+The policy library exposes versioned internal rules and the approved tools register. This makes the assessment basis visible to reviewers. The assessment portfolio supports searching and status filtering. Inside each case, Assessment, Evidence, Decision and Activity organize the work. Monitoring and Audit provide cross case visibility, which we will inspect after running the scenarios.
 
-We switch to Governance Reviewer. The reviewer verifies the oversight evidence, attests the governance sign off and enters a meaningful rationale. The backend checks these requirements again. A business requester or auditor cannot submit an approval through the API.
+Use case 1  |  Run the staff assistant assessment
+Our first proposal is a staff policy knowledge assistant. It uses internal data and an approved tool, with oversight evidence already present. We select Run assessment. The saved workflow inspects evidence, checks the register and maps policy requirements. The result is low risk and ready for AI Governance review. The business value is a prepared review packet, not automatic approval.
 
-The approval is recorded with its rationale and time. It applies to the proposed scope in this synthetic demo. It does not deploy the system. The decision packet can be exported as JSON with the case, findings, evidence, source version and audit entries.
+Observe the actual tool results
+Open Activity to see what actually executed. Evidence inspection found one matching evidence kind and no gaps. Lookup tool returned Northstar Assist as approved. The risk step produced a finding grounded in versioned policy. Review preparation then paused for a human decision. These are recorded tool results and state transitions, not generated explanations of hidden model reasoning.
 
-The patient message drafting case takes a different path. Protected health information, external processing and patient facing outputs trigger additional requirements. The workflow pauses because BAA, evaluation and monitoring evidence are missing. The case stays saved while the requester gathers the material.
+Human handoff  |  Verify and decide
+The Business Requester cannot approve. Switching to Governance Reviewer enables evidence verification and sign off. We check the oversight record, attest AI Governance review and enter a scope specific rationale. Approve scope records the outcome and preserves the verified checks. Export packet is available for the case record. The approval concerns this synthetic proposal and does not deploy any system.
 
-The evidence workspace separates present and missing evidence kinds. Each record includes an author, document date and applicable system version. We use the explicitly labeled Add demo evidence action to attach synthetic fixtures. In a normal demonstration, the requester can also paste a fictional evidence excerpt into the attachment form.
+Use case 2  |  Patient messages need evidence
+Patient message drafting introduces protected health information, patient facing output and an external processor. Running the assessment now produces a different route. The workflow pauses for BAA, evaluation and monitoring evidence. It retains the case rather than filling gaps with assumptions. This is a practical agentic behavior: stop, explain the missing inputs and wait for the next authorized action.
 
-Resuming rechecks completeness and proceeds to the risk assessment. This case is now high risk and routes to AI Governance, Privacy and Security or Vendor Risk. Adding evidence does not approve the case. The human review gate still applies.
+Supply evidence and resume
+The Evidence workspace identifies missing artifacts. We select Add demo evidence to attach explicitly synthetic fixtures. Their metadata includes author, date and system version. Resume assessment rechecks completeness and continues the same case. It now reaches high risk review with AI Governance, Privacy and Security or Vendor Risk. Evidence presence does not remove the human decision gate.
 
-Each substantive finding links to a versioned policy clause. Opening the citation shows the exact fictional policy used by the workflow. Public healthcare references are background material. The application does not interpret a submitted document as proof of legal compliance.
+Inspect the source behind a finding
+Opening the policy citation reveals the exact fictional clause behind the finding. The reviewer can compare the requirement with the submitted evidence. This connects the result to a source instead of asking the reviewer to trust a fluent summary. The current evidence tool checks metadata and version, so people still need to verify content and scope.
 
-Discharge instruction drafting demonstrates recovery. Its evidence is complete, but the tools register is deliberately unavailable. The trace shows two failed attempts. The workflow stops at an interrupt instead of treating the missing register result as an approval.
+Use case 3  |  A tool becomes unavailable
+Discharge instruction drafting has complete evidence, but its tools register deliberately fails. We run the assessment and open Activity. Two lookup attempts fail, then the workflow pauses with the case saved. It does not interpret an unavailable register as approval. This scenario tests bounded retries and a visible recovery path for the person operating the system.
 
-An explicit retry clears the demonstration outage. The same case resumes, successfully looks up the tool and maps the clinical risks. Earlier failures remain visible alongside the recovery. The checkpoint mechanism preserves progress; it does not erase unsuccessful attempts.
+Retry and inspect preserved history
+Select Retry lookup. The synthetic outage clears, and the same checkpoint resumes. The trace keeps both failed attempts, then adds the resume event, successful lookup, high risk assessment and review preparation. We can explain what changed and why the workflow continued. A human decision is still required after recovery.
 
-The audit view records assessment runs, evidence attachments, resumes and the human decision. These are local application records, not a tamper proof audit service. The optional live mode adds bounded model selected tool calls and can export traces to LangSmith once configured. The tested demonstration shown here uses local rules and tools, with human decision authority throughout.
+Monitoring audit and the model boundary
+Monitoring shows eighteen workflow events, two failed tool attempts and one human decision. Audit records the actions and rationale. In this tested mode, rules select the workflow path and real local tools execute. Optional live mode adds bounded model selected tool loops and advisory summaries. Live model and LangSmith integration still need credentialed validation. This demonstration proves local state, tool use, interruption, recovery and human handoff, while preserving decision accountability.

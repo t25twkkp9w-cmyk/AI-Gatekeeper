@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: ai-gatekeeper
+    runtime: docker
+    plan: starter
+    numInstances: 1
+    healthCheckPath: /healthz
+    autoDeployTrigger: off
+    disk:
+      name: gatekeeper-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: GATEKEEPER_MODE
+        value: live
+      - key: GATEKEEPER_DATA_DIR
+        value: /var/data
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: LANGSMITH_TRACING
+        value: "true"
+      - key: LANGSMITH_PROJECT
+        value: ai-gatekeeper-hosted
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LANGSMITH_API_KEY
+        sync: false
+      - key: DEMO_USERNAME
+        value: cohort
+      - key: DEMO_PASSWORD
+        sync: false

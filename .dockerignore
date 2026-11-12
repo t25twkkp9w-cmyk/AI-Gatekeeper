@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+.venv
+.python
+.setup-cache
+.npm-cache
+runtime
+work
+docs
+frontend/node_modules
+frontend/.next
+**/__pycache__
+**/*.pyc

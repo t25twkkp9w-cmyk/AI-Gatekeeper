@@ -1,0 +1,62 @@
+AI Gatekeeper Agent | Echo at 1.10x | 8:40
+
+00:00  Welcome to AI Gatekeeper Agent
+Welcome to AI Gatekeeper Agent. A clearer path to responsible AI. Today, we will explore how a healthcare AI proposal becomes an evidence-based, accountable decision. First, the business problem, product, workflows, and architecture. Then, the application in action, with model calls, knowledge tools, human review, and observability. We will close with what it takes to scale into production. Let us begin.
+
+00:22  The business problem
+Imagine a healthcare team proposing a staff policy assistant, while another team wants AI to draft patient messages. Both need a review, but their data, risks, and evidence requirements differ. Today, those reviews often depend on scattered documents, repeated questions, and unclear ownership. AI Gatekeeper Agent organizes that work. The intended impact is less reviewer preparation, more complete submissions, and decisions that can be reconstructed. Time savings are a hypothesis to measure, not a claimed result.
+
+00:52  One enterprise workflow
+The enterprise workflow has five stages: intake, evidence, risk and controls, human review, and decision. The requester supplies purpose, owner, tool, and data classification. The system checks the required evidence and tool eligibility, then prepares findings and controls. Missing evidence pauses the case. Requested changes send it back for reassessment. A recorded approval is a governance outcome, not automatic deployment.
+
+01:16  Two use cases to follow
+We will follow two examples. The staff policy assistant handles internal information and needs documented oversight within an approved scope. Patient message drafting introduces protected health information, external processing, and patient-facing outputs. That requires privacy evidence, evaluation, monitoring, and additional reviewers. The workflow adapts to the declared context instead of treating every request alike.
+
+01:40  Technology serves the process
+The experience layer is Next.js and React. FastAPI validates actions and protects case revisions. LangGraph coordinates conditional routes, state, checkpoints, and human interrupts. LangChain implements three specialists for intake, risk, and review preparation. OpenAI supplies advisory reasoning, with GPT four point one mini as the default model. SQLite stores cases, audit events, and checkpoints. A versioned JSON catalog supplies synthetic knowledge. LangSmith is the required observability layer.
+
+02:09  Inside the model and tool loop
+This is the agent at the center of the solution. Inputs include purpose, owner, data class, tool, evidence, and version. LangGraph coordinates the case, while LangChain specialists use the OpenAI model to select tools and synthesize findings. Read tools inspect evidence, retrieve policy, and look up approved tools. Knowledge returns as observations to the model. Outputs are risk findings, cited controls, a review packet, and the next action. The harness enforces rules and checkpoints. LangSmith traces execution. Humans retain decision authority.
+
+02:40  The execution harness
+The harness makes this more than a prompt. It validates inputs, maintains case revisions, persists checkpoints, and routes the next action. A register failure gets two total attempts before an explicit recovery pause. Model calls have a twenty-second timeout and one retry, while agent iterations are bounded. Model failures produce a warning and deterministic fallback. These controls make interruption and recovery visible rather than silently treating every call as successful.
+
+03:07  Observe execution and decisions
+Observability follows the same workflow. LangSmith connects orchestration to model and tool spans, with inputs, outputs, errors, latency, and token usage where available. Application monitoring surfaces workflow events and recoveries. Audit history answers a different question: who recorded what decision, with which rationale and evidence. Neither tracing nor a model explanation proves compliance. Now we will connect this architecture to the application.
+
+03:34  Part two: application walkthrough
+Part two uses edited captures from actual application interactions, rather than a continuous screen recording. We created a fresh staff-policy case in live-model mode. We then inspect the saved patient-message case to compare its evidence and review route. The local live run is demonstrated here; hosted authentication and end-to-end model tracing require their own verification.
+
+03:56  Input: define the proposed use
+We begin by entering a title, department, accountable owner, and purpose. The scope explicitly excludes patient data and includes human review. The selected tool is Northstar Assist, and the data classification is internal. Behind the interface, FastAPI validates the request and creates the case record. This structured input matters: risk rules depend on declared scope, so production needs controls to detect misleading or incomplete declarations.
+
+04:21  Pause: evidence is required
+Running the assessment does not immediately produce an approval. The intake specialist operates, and the evidence gate identifies missing oversight. The application shows evidence needed and preserves the case. This is a useful pause: the system asks for a required artifact instead of inventing it. The input-to-output path includes a human handoff before risk assessment can proceed.
+
+04:44  Resume: recheck the evidence
+We add the clearly labeled demo oversight record, then resume assessment. The record includes author, date, content, and system version. The system checks that those fields match the current case. These are completeness and version checks, not independent verification that the document is true. The same case identity connects the evidence handoff to later results.
+
+05:05  Output: prepare the human review
+The result is low risk for the declared internal scope, with policy references, applicable controls, and an AI Governance review route. The tool register supplies eligibility facts. Rules determine findings and controls. The model prepares the advisory explanation. That separation is important: fluent text is not the decision engine. We have moved from structured input through tools, rules, and model synthesis to a reviewable output.
+
+05:30  Behind the scenes: actual calls
+The activity view shows actual model events and tool selections from this case. The initial intake called retrieve policy. After resumption, intake used inspect evidence; risk and review preparation also retrieved policy. The deterministic tool-register lookup supplied the approved-tool record. The application recorded three specialist completions during the resumed path and prepared the review packet. LangSmith provides the deeper nested execution view.
+
+05:56  The human decision boundary
+The decision screen labels the narrative as advisory and requires evidence verification, specialist attestations, and rationale. As a business requester, the decision controls are disabled. A governance reviewer must take responsibility for the permitted action. Production must replace selectable personas and shared credentials with authenticated identities and independently attributable signoffs.
+
+06:20  Patient messaging: stronger controls
+Now compare the saved patient-message case. This is a replay of an earlier workflow, not a newly executed live model run. The proposal drafts portal replies for nurse review using an external processor. The output is high risk, with privacy, governance, and security or vendor-risk review. Its requirements include data flow, contractual review, evaluation, monitoring, and oversight. The same product supports a different route because the data and exposure are different.
+
+06:46  Patient messaging: inspect the handoff
+The saved activity makes the evidence handoff concrete. Initially, two matching evidence kinds were present and three were missing. After evidence was added, the workflow resumed and found five complete kinds. This shows why state matters: the result preserves the history of how the case became reviewable, rather than presenting only a final paragraph.
+
+07:07  Monitoring connects the layers
+The monitoring view brings execution together. It shows live advisory mode, tracing enabled, recent model and tool events, and aggregate counts that include earlier demonstration cases. These counters are not production service-level metrics. For the operator, the next step is to correlate a case with its LangSmith run and inspect latency, errors, and tool observations. A prior local LangSmith run was verified; the fresh case's external trace was not rechecked after the connection interruption.
+
+07:35  Scale to production
+Production scale-up has three workstreams. First, replace shared login with SSO and server-bound roles; protect data, secrets, and evidence provenance; use durable managed storage and tested recovery. Second, introduce queued workers, idempotency, concurrency controls, rate limits, cost budgets, and tested failure recovery. Evaluate policy grounding, tool selection, and decision-gate behavior before releases. Third, establish accountable owners, independent signoffs, audit retention, and incident processes. The current Render Free service and temporary storage are demonstration infrastructure.
+
+08:09  From AI request to accountable decision
+AI Gatekeeper Agent demonstrates a practical capability: coordinating an AI governance review across evidence, knowledge tools, model reasoning, workflow state, and human authority. The staff example showed live execution and a resumable evidence gate. Patient messaging showed how higher exposure changes requirements and review routing. The result is a process people can inspect, resume, and explain. With production controls and measured validation, this can become a dependable enterprise review service. Thank you for watching.
+

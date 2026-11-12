@@ -1,4 +1,4 @@
-# AI Gatekeeper
+# AI Gatekeeper Agent
 
 A standalone healthcare AI governance demo. Assess a proposed use case, gather evidence, map risks and controls, and prepare a recorded human decision.
 
@@ -113,3 +113,11 @@ Media source scripts and original app captures are included. Media generation us
 The revised product video begins with business context and constraints, explains the ReAct-style live-agent design, maps models/tools/internal and external data, and connects technology layers to validation use cases. The revised walkthrough shows a fresh interactive session with the larger-font UI, edited into action/result sequences. Both distinguish tested rule-based workflow behavior from unverified live model integrations.
 
 The combined video supersedes the separate videos. A persistent workflow highlights the active stage throughout the product explanation and app demonstration. Model and tool calls, pause/resume branches, human decisions and required LangSmith observability appear in the architecture. LangSmith is a required target-design and deployment-validation component; the recorded local demo has no live model or LangSmith connection. The walkthrough uses native-resolution app captures with focused closeups, and closes with a thank-you. Download the MP4 and view full-screen for best readability.
+
+
+## Current solution materials
+
+- [Agent solution document with visual flows](docs/AI-Gatekeeper-Solution.html)
+- Agent design: structured inputs → model and tool loop → policy-grounded review outputs → human decision. LangGraph coordinates the workflow; LangSmith traces execution.
+
+Earlier videos and PDFs in this repository are historical snapshots with prior branding.

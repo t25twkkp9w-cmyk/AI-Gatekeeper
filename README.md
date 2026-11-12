@@ -99,7 +99,8 @@ Public healthcare background links are listed in `data/catalog.json`. Internal p
 ## Current solution materials
 
 - [AI Gatekeeper Agent solution document](docs/AI-Gatekeeper-Solution.html), with linked synthetic datasets and agent-centered visual flows.
-- Revised video: **AI-Gatekeeper-Agent-Demo-Echo-1.10x.mp4**, 8 minutes 40 seconds, Echo voice at 1.10x. Delivery is available in the project conversation; repository video upload is pending.
+- [AI Gatekeeper Agent demo video](docs/AI-Gatekeeper-Agent-Demo-Echo-1.10x.mp4), 8 minutes 40 seconds, Echo voice at 1.10x. Select **Download raw file** and play full-screen.
+- [Narration transcript with chapter times](docs/AI-Gatekeeper-Agent-Demo-transcript.txt).
 - The dedicated agent slide shows inputs → agent/model → outputs, with read-tool calls, observations, knowledge stores, human authority, workflow safeguards and LangSmith tracing.
 
 The revised video uses edited captures from the running application, including a fresh live staff-assistant assessment, a saved rule-based patient-message workflow, and a separately verified earlier LangSmith trace. It is not a continuous screen recording, and the LangSmith capture is not presented as the fresh assessment's trace.

@@ -1,0 +1,14 @@
+.venv/
+frontend/node_modules/
+frontend/.next/
+frontend/next-env.d.ts
+frontend/*.tsbuildinfo
+.env
+runtime/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+.setup-cache/
+.python/
+.npm-cache/

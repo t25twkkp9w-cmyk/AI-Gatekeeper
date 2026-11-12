@@ -1,0 +1,36 @@
+{
+  "organization": "Northstar Health • Fictional demonstration organization",
+  "version": "2026.11-demo.1",
+  "policies": [
+    {"id":"POL-01","title":"AI Governance and Human Oversight","version":"1.0","type":"Synthetic internal policy","text":"Every AI use case requires a named owner, defined purpose, approved scope, evidence-based assessment and recorded human approval. Clinical decision support requires clinical safety review. AI recommendations do not authorize deployment."},
+    {"id":"POL-02","title":"Health Data and Vendor Handling","version":"1.0","type":"Synthetic internal policy","text":"PHI workflows require privacy review, a documented data flow and vendor contractual review when an external processor is used. The demonstration requires a BAA evidence record for external PHI processing. De-identification claims require a documented method and privacy review; removing names alone is insufficient evidence."},
+    {"id":"POL-03","title":"Approved Tools and Security","version":"1.0","type":"Synthetic internal policy","text":"Check the versioned approved tools register. Pending or unknown tools must not be approved through this workflow. Tool lookup failures must remain unresolved until successful retry. Conflicting vendor statements require documented reconciliation and security review."},
+    {"id":"POL-04","title":"Patient-Facing AI and Clinical Safety","version":"1.0","type":"Synthetic internal policy","text":"Patient-facing outputs require a human oversight plan, monitoring plan and evaluation evidence. Clinical decision support requires clinical validation and specialist review. Autonomous prescribing is outside the permitted demonstration scope and cannot be approved."},
+    {"id":"POL-05","title":"Evidence and Decision Records","version":"1.0","type":"Synthetic internal policy","text":"Evidence must identify its author, date, applicable system version and content. Reviewers verify required evidence before approval. Changes to the assessment require re-review. Preserve tool attempts, source versions and decision rationale."}
+  ],
+  "references": [
+    {"title":"HHS: HIPAA and Cloud Computing","url":"https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html","note":"External background reference. Demo rules are synthetic internal controls, not a legal compliance determination."},
+    {"title":"HHS: De-identification Guidance","url":"https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html","note":"Background on formal de-identification methods. A submitted document is not automatic proof of compliance."},
+    {"title":"NIST: AI Risk Management Framework","url":"https://www.nist.gov/itl/ai-risk-management-framework","note":"Voluntary risk management background."}
+  ],
+  "tools": [
+    {"id":"northstar-assist","name":"Northstar Assist","status":"Approved","data_classes":["Internal","Public"],"version":"2.1","owner":"Enterprise IT"},
+    {"id":"care-draft","name":"CareDraft Enterprise","status":"Approved","data_classes":["PHI","Internal","De-identified"],"version":"1.4","owner":"Clinical Informatics"},
+    {"id":"research-studio","name":"Research Studio","status":"Approved","data_classes":["De-identified","Public"],"version":"3.0","owner":"Research IT"},
+    {"id":"open-chat","name":"OpenChat Consumer","status":"Not approved","data_classes":["Public"],"version":"1.0","owner":"Unassigned"}
+  ],
+  "controls": [
+    {"id":"CTL-01","title":"Named accountable owner","policy":"POL-01"},
+    {"id":"CTL-02","title":"Approved tool and permitted data class","policy":"POL-03"},
+    {"id":"CTL-03","title":"Human oversight plan","policy":"POL-01"},
+    {"id":"CTL-04","title":"Documented data flow","policy":"POL-02"},
+    {"id":"CTL-05","title":"External PHI contractual review","policy":"POL-02"},
+    {"id":"CTL-06","title":"Privacy specialist review","policy":"POL-02"},
+    {"id":"CTL-07","title":"Clinical safety validation","policy":"POL-04"},
+    {"id":"CTL-08","title":"Patient-facing evaluation","policy":"POL-04"},
+    {"id":"CTL-09","title":"Production monitoring plan","policy":"POL-04"},
+    {"id":"CTL-10","title":"De-identification method review","policy":"POL-02"},
+    {"id":"CTL-11","title":"Vendor evidence reconciliation","policy":"POL-03"},
+    {"id":"CTL-12","title":"Human approval and audit trail","policy":"POL-05"}
+  ]
+}

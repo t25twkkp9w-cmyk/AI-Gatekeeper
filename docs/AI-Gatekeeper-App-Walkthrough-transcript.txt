@@ -1,0 +1,23 @@
+This walkthrough uses edited captures from the running local application. The dashboard shows six synthetic healthcare cases, current review status and the three stage governance workflow. The selected persona controls which demonstration actions are available. The current mode is rule based; no live model or LangSmith session is claimed.
+
+We open the staff policy knowledge assistant. The submission declares internal data, a named owner and an approved tool. Clicking Run assessment starts the saved LangGraph workflow. The application checks the evidence inventory before moving to tool lookup and risk assessment.
+
+The Activity tab shows the actual execution trace. Evidence inspection found the required oversight document. The lookup tool returned Northstar Assist as approved. The risk role mapped the internal use case to its policy and controls. Review preparation then paused for a human decision. These are observed local workflow events, not invented model reasoning.
+
+We switch to Governance Reviewer. The reviewer verifies the oversight evidence, attests the governance sign off and enters a meaningful rationale. The backend checks these requirements again. A business requester or auditor cannot submit an approval through the API.
+
+The approval is recorded with its rationale and time. It applies to the proposed scope in this synthetic demo. It does not deploy the system. The decision packet can be exported as JSON with the case, findings, evidence, source version and audit entries.
+
+The patient message drafting case takes a different path. Protected health information, external processing and patient facing outputs trigger additional requirements. The workflow pauses because BAA, evaluation and monitoring evidence are missing. The case stays saved while the requester gathers the material.
+
+The evidence workspace separates present and missing evidence kinds. Each record includes an author, document date and applicable system version. We use the explicitly labeled Add demo evidence action to attach synthetic fixtures. In a normal demonstration, the requester can also paste a fictional evidence excerpt into the attachment form.
+
+Resuming rechecks completeness and proceeds to the risk assessment. This case is now high risk and routes to AI Governance, Privacy and Security or Vendor Risk. Adding evidence does not approve the case. The human review gate still applies.
+
+Each substantive finding links to a versioned policy clause. Opening the citation shows the exact fictional policy used by the workflow. Public healthcare references are background material. The application does not interpret a submitted document as proof of legal compliance.
+
+Discharge instruction drafting demonstrates recovery. Its evidence is complete, but the tools register is deliberately unavailable. The trace shows two failed attempts. The workflow stops at an interrupt instead of treating the missing register result as an approval.
+
+An explicit retry clears the demonstration outage. The same case resumes, successfully looks up the tool and maps the clinical risks. Earlier failures remain visible alongside the recovery. The checkpoint mechanism preserves progress; it does not erase unsuccessful attempts.
+
+The audit view records assessment runs, evidence attachments, resumes and the human decision. These are local application records, not a tamper proof audit service. The optional live mode adds bounded model selected tool calls and can export traces to LangSmith once configured. The tested demonstration shown here uses local rules and tools, with human decision authority throughout.

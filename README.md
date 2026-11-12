@@ -95,3 +95,13 @@ Persona selection is a local demonstration mechanism, not authentication. Specia
 The scope follows the Week 3 Project Handout (October 2026): stateful tool use, failure recovery, human handoff, project documentation and a demo of five minutes or less. The source handout is not redistributed here.
 
 Public healthcare background links are listed in `data/catalog.json`. Internal policies and vendor names are fictional. This project does not certify regulatory compliance.
+
+## Submission artifacts
+
+- [Solution document](docs/AI-Gatekeeper-Solution-Document.pdf)
+- [Product and architecture overview video](docs/AI-Gatekeeper-Product-Architecture-Overview.mp4) (4:24)
+- [App walkthrough video](docs/AI-Gatekeeper-App-Walkthrough.mp4) (3:54)
+
+The narrated walkthrough uses edited screenshots captured from the running application. It is not continuous screen recording. Both videos show the tested rule-based mode; live OpenAI and LangSmith paths require credentials and remain unverified. Final narrow-screen browser validation is incomplete.
+
+Media source scripts and original app captures are included. Media generation uses Pillow, imageio-ffmpeg, edge-tts, ReportLab and PyMuPDF; the script currently uses macOS Arial fonts. These optional dependencies are separate from the application runtime.

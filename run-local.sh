@@ -15,11 +15,14 @@ for port in 8100 3100; do
     exit 1
   fi
 done
+if [[ ! -f frontend/.next/BUILD_ID ]]; then
+  npm --prefix frontend run build
+fi
 mkdir -p runtime
 .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8100 &
 API_PID=$!
-(cd frontend && npm run dev) &
+(cd frontend && npm run start) &
 WEB_PID=$!
 trap 'kill "$API_PID" "$WEB_PID" 2>/dev/null || true' EXIT INT TERM
 echo 'AI Gatekeeper: http://127.0.0.1:3100'
-wait
+wait "$WEB_PID"

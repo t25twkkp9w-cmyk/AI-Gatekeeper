@@ -1,0 +1,37 @@
+[
+  {
+    "start_seconds": 0,
+    "duration_seconds": 31.44,
+    "image": "overview-1.png"
+  },
+  {
+    "start_seconds": 31.44,
+    "duration_seconds": 39.24,
+    "image": "architecture.png"
+  },
+  {
+    "start_seconds": 70.68,
+    "duration_seconds": 37.11,
+    "image": "workflow.png"
+  },
+  {
+    "start_seconds": 107.79,
+    "duration_seconds": 33.15,
+    "image": "overview-4.png"
+  },
+  {
+    "start_seconds": 140.94,
+    "duration_seconds": 43.66,
+    "image": "overview-5.png"
+  },
+  {
+    "start_seconds": 184.6,
+    "duration_seconds": 37.97,
+    "image": "overview-6.png"
+  },
+  {
+    "start_seconds": 222.57,
+    "duration_seconds": 41.36,
+    "image": "overview-7.png"
+  }
+]

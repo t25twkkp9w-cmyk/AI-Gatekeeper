@@ -94,3 +94,24 @@ def test_new_case_validation():
     r=client.post('/api/cases',json=body); assert r.status_code==200
     cid=r.json()['id']; assert post(cid,'run').json()['status']=='waiting_evidence'
     assert client.post('/api/cases',json=body,headers={'X-Persona':'Auditor'}).status_code==403
+
+def test_live_mode_without_key_falls_back(monkeypatch):
+    from backend.workflow import specialist, retrieve_policy
+    monkeypatch.setenv('GATEKEEPER_MODE','live')
+    monkeypatch.delenv('OPENAI_API_KEY',raising=False)
+    narrative,events=specialist('Review Preparation',{'risk':'Low'},[retrieve_policy])
+    assert narrative is None
+    assert events[0]['action']=='MODEL: unavailable'
+
+
+def test_live_provider_failure_falls_back(monkeypatch):
+    import langchain_openai
+    from backend.workflow import specialist, retrieve_policy
+    monkeypatch.setenv('GATEKEEPER_MODE','live')
+    monkeypatch.setenv('OPENAI_API_KEY','synthetic-test-key-not-a-real-credential')
+    def fail(**kwargs): raise TimeoutError('Simulated provider timeout')
+    monkeypatch.setattr(langchain_openai,'ChatOpenAI',fail)
+    narrative,events=specialist('Review Preparation',{'risk':'Low'},[retrieve_policy])
+    assert narrative is None
+    assert 'TimeoutError' in events[0]['detail']
+    assert 'synthetic-test-key' not in str(events)

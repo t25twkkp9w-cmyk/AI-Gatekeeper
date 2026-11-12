@@ -1,0 +1,62 @@
+[
+  {
+    "start_seconds": 0,
+    "duration_seconds": 21.36,
+    "image": "walk-1.png"
+  },
+  {
+    "start_seconds": 21.36,
+    "duration_seconds": 17.62,
+    "image": "walk-2.png"
+  },
+  {
+    "start_seconds": 38.98,
+    "duration_seconds": 24.05,
+    "image": "walk-3.png"
+  },
+  {
+    "start_seconds": 63.03,
+    "duration_seconds": 16.78,
+    "image": "walk-4.png"
+  },
+  {
+    "start_seconds": 79.81,
+    "duration_seconds": 17.36,
+    "image": "walk-5.png"
+  },
+  {
+    "start_seconds": 97.17,
+    "duration_seconds": 20.14,
+    "image": "walk-6.png"
+  },
+  {
+    "start_seconds": 117.31,
+    "duration_seconds": 21.56,
+    "image": "walk-7.png"
+  },
+  {
+    "start_seconds": 138.87,
+    "duration_seconds": 16.56,
+    "image": "walk-8.png"
+  },
+  {
+    "start_seconds": 155.43,
+    "duration_seconds": 18.15,
+    "image": "walk-9.png"
+  },
+  {
+    "start_seconds": 173.58,
+    "duration_seconds": 17.19,
+    "image": "walk-10.png"
+  },
+  {
+    "start_seconds": 190.77,
+    "duration_seconds": 18.68,
+    "image": "walk-11.png"
+  },
+  {
+    "start_seconds": 209.45,
+    "duration_seconds": 24.15,
+    "image": "walk-12.png"
+  }
+]

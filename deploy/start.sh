@@ -13,6 +13,8 @@ export LANGSMITH_PROJECT="${LANGSMITH_PROJECT:-ai-gatekeeper-hosted}"
 umask 077
 hashed=$(printf '%s\n' "$DEMO_PASSWORD" | openssl passwd -apr1 -stdin)
 printf '%s:%s\n' "$DEMO_USERNAME" "$hashed" > /etc/nginx/gatekeeper.htpasswd
+chown root:www-data /etc/nginx/gatekeeper.htpasswd
+chmod 640 /etc/nginx/gatekeeper.htpasswd
 unset hashed
 sed "s/__PORT__/${PORT:-10000}/g" /app/deploy/nginx.conf > /etc/nginx/nginx.conf
 mkdir -p "$GATEKEEPER_DATA_DIR"

@@ -28,13 +28,13 @@ The default is a **rule-based synthetic demo**, with real LangGraph execution, L
 - Policy citations, local event traces, audit history and JSON decision-packet exports.
 - Responsive Next.js interface with subdued blue and light purple monitoring.
 
-## Optional live specialist agents
+## Live specialist agents and required observability
 
 Copy `.env.example` to `.env`. Set `GATEKEEPER_MODE=live`, configure `OPENAI_API_KEY`, and set `OPENAI_MODEL` to a model available to your account. Restart the backend.
 
-In live mode the Intake and Evidence, Risk and Controls, and Review Preparation specialists use LangChain `create_agent` with bounded read-only tool calls. The model chooses relevant tools and supplies advisory analysis. Code retains authority over required evidence, risk classification, approval gates and state transitions. Model failures fall back to the deterministic workflow and appear in the trace. The live provider path has not been verified without credentials.
+In live mode the Intake and Evidence, Risk and Controls, and Review Preparation specialists use LangChain `create_agent` with bounded read-only tool calls. The model chooses relevant tools and supplies advisory analysis. Code retains authority over required evidence, risk classification, approval gates and state transitions. Model failures fall back to the deterministic workflow and appear in the trace. Live model execution and a LangSmith trace were subsequently verified locally for the revised demo; verify the hosted environment separately.
 
-Set `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY` and `LANGSMITH_PROJECT` to trace runs to your project. Tracing is off by default. Only use synthetic data in this demo.
+Set `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY` and `LANGSMITH_PROJECT` to trace runs to your project. LangSmith is required for the narrated agent demo; explicitly enable it in each deployment. Only use synthetic data in this demo.
 
 ## Demo journeys
 
@@ -88,7 +88,7 @@ Tests cover the happy path, missing evidence, wrong versions, conflict review, r
 
 ## Boundaries before deployment
 
-Persona selection is a local demonstration mechanism, not authentication. Specialist sign-offs are reviewer attestations, not independently authenticated approvals. Audit rows are append-only through the app, not tamper-proof. Evidence metadata and version checks do not establish substantive truth or HIPAA compliance. Risk gates depend on structured intake declarations; this demo does not independently classify clinical intent from arbitrary prose. Add SSO, server-bound roles, individual sign-offs, access controls, encrypted managed storage, hardened uploads, secrets management and operational review before exposing this service. No deployment is included in this local validation milestone.
+Persona selection is a local demonstration mechanism, not authentication. Specialist sign-offs are reviewer attestations, not independently authenticated approvals. Audit rows are append-only through the app, not tamper-proof. Evidence metadata and version checks do not establish substantive truth or HIPAA compliance. Risk gates depend on structured intake declarations; this demo does not independently classify clinical intent from arbitrary prose. Add SSO, server-bound roles, individual sign-offs, access controls, encrypted managed storage, hardened uploads, secrets management and operational review before exposing this service. The demo is hosted on Render Free with shared-password access. Its SQLite data is ephemeral; production requires managed persistence and individual identity.
 
 ## Sources
 
@@ -96,28 +96,12 @@ The scope follows the Week 3 Project Handout (October 2026): stateful tool use, 
 
 Public healthcare background links are listed in `data/catalog.json`. Internal policies and vendor names are fictional. This project does not certify regulatory compliance.
 
-## Submission artifacts
-
-- [Solution document in Word](docs/AI-Gatekeeper-Solution-Document.docx)
-- [Solution document in PDF](docs/AI-Gatekeeper-Solution-Document.pdf)
-- [Combined product, architecture and app demo](docs/AI-Gatekeeper-Complete-Overview-and-Demo.mp4) (8:54, 2560 × 1440, current version)
-- [Combined video transcript](docs/AI-Gatekeeper-Complete-Overview-and-Demo-transcript.txt) and [chapter timings](docs/AI-Gatekeeper-Complete-Overview-and-Demo-chapters.json)
-- [Agentic workflow visual](docs/AI-Gatekeeper-Agentic-Workflow.png)
-- [Product and architecture overview video](docs/AI-Gatekeeper-Product-Architecture-Overview.mp4) (revised business overview)
-- [App walkthrough video](docs/AI-Gatekeeper-App-Walkthrough.mp4) (revised feature tour and three use case demonstrations)
-
-The narrated walkthrough uses edited screenshots captured from the running application. It is not continuous screen recording. Both videos show the tested rule-based mode; live OpenAI and LangSmith paths require credentials and remain unverified. Final narrow-screen browser validation is incomplete.
-
-Media source scripts and original app captures are included. Media generation uses Pillow, imageio-ffmpeg, edge-tts, ReportLab and PyMuPDF; the script currently uses macOS Arial fonts. These optional dependencies are separate from the application runtime.
-
-The revised product video begins with business context and constraints, explains the ReAct-style live-agent design, maps models/tools/internal and external data, and connects technology layers to validation use cases. The revised walkthrough shows a fresh interactive session with the larger-font UI, edited into action/result sequences. Both distinguish tested rule-based workflow behavior from unverified live model integrations.
-
-The combined video supersedes the separate videos. A persistent workflow highlights the active stage throughout the product explanation and app demonstration. Model and tool calls, pause/resume branches, human decisions and required LangSmith observability appear in the architecture. LangSmith is a required target-design and deployment-validation component; the recorded local demo has no live model or LangSmith connection. The walkthrough uses native-resolution app captures with focused closeups, and closes with a thank-you. Download the MP4 and view full-screen for best readability.
-
-
 ## Current solution materials
 
-- [Agent solution document with visual flows](docs/AI-Gatekeeper-Solution.html)
-- Agent design: structured inputs → model and tool loop → policy-grounded review outputs → human decision. LangGraph coordinates the workflow; LangSmith traces execution.
+- [AI Gatekeeper Agent solution document](docs/AI-Gatekeeper-Solution.html), with linked synthetic datasets and agent-centered visual flows.
+- Revised video: **AI-Gatekeeper-Agent-Demo-Echo-1.10x.mp4**, 8 minutes 40 seconds, Echo voice at 1.10x. Delivery is available in the project conversation; repository video upload is pending.
+- The dedicated agent slide shows inputs → agent/model → outputs, with read-tool calls, observations, knowledge stores, human authority, workflow safeguards and LangSmith tracing.
 
-Earlier videos and PDFs in this repository are historical snapshots with prior branding.
+The revised video uses edited captures from the running application, including a fresh live staff-assistant assessment, a saved rule-based patient-message workflow, and a separately verified earlier LangSmith trace. It is not a continuous screen recording, and the LangSmith capture is not presented as the fresh assessment's trace.
+
+Older Word/PDF documents and videos in `docs/` are historical snapshots with prior branding and validation status. The HTML above is the current solution document.

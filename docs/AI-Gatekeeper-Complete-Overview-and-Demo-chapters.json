@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Welcome to AI Gatekeeper",
+    "start_seconds": 0,
+    "duration_seconds": 29.16
+  },
+  {
+    "title": "Business friction and constraints",
+    "start_seconds": 29.16,
+    "duration_seconds": 30.52
+  },
+  {
+    "title": "Workflow branches preserve progress",
+    "start_seconds": 59.68,
+    "duration_seconds": 30.36
+  },
+  {
+    "title": "ReAct connects model and tool calls",
+    "start_seconds": 90.04,
+    "duration_seconds": 34.39
+  },
+  {
+    "title": "Models tools and governed data",
+    "start_seconds": 124.43,
+    "duration_seconds": 34.6
+  },
+  {
+    "title": "Technology layers serve the workflow",
+    "start_seconds": 159.03,
+    "duration_seconds": 34.87
+  },
+  {
+    "title": "Observability follows every handoff",
+    "start_seconds": 193.9,
+    "duration_seconds": 31.48
+  },
+  {
+    "title": "From design to the application",
+    "start_seconds": 225.38,
+    "duration_seconds": 29.32
+  },
+  {
+    "title": "Feature tour  |  Dashboard and intake",
+    "start_seconds": 254.7,
+    "duration_seconds": 24.69
+  },
+  {
+    "title": "Feature tour  |  Sources and portfolio",
+    "start_seconds": 279.39,
+    "duration_seconds": 23.47
+  },
+  {
+    "title": "Use case 1  |  Run the staff assistant assessment",
+    "start_seconds": 302.86,
+    "duration_seconds": 24.28
+  },
+  {
+    "title": "Observe the actual tool results",
+    "start_seconds": 327.14,
+    "duration_seconds": 23.56
+  },
+  {
+    "title": "Human handoff  |  Verify and decide",
+    "start_seconds": 350.7,
+    "duration_seconds": 24.31
+  },
+  {
+    "title": "Use case 2  |  Patient messages need evidence",
+    "start_seconds": 375.01,
+    "duration_seconds": 24.67
+  },
+  {
+    "title": "Supply evidence and resume",
+    "start_seconds": 399.68,
+    "duration_seconds": 25.22
+  },
+  {
+    "title": "Inspect the source behind a finding",
+    "start_seconds": 424.9,
+    "duration_seconds": 19.84
+  },
+  {
+    "title": "Use case 3  |  A tool becomes unavailable",
+    "start_seconds": 444.74,
+    "duration_seconds": 22.17
+  },
+  {
+    "title": "Retry and inspect preserved history",
+    "start_seconds": 466.91,
+    "duration_seconds": 20.68
+  },
+  {
+    "title": "Monitoring audit and the model boundary",
+    "start_seconds": 487.59,
+    "duration_seconds": 30.09
+  },
+  {
+    "title": "Thank you",
+    "start_seconds": 517.68,
+    "duration_seconds": 15.96
+  }
+]

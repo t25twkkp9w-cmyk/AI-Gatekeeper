@@ -100,6 +100,9 @@ Public healthcare background links are listed in `data/catalog.json`. Internal p
 
 - [Solution document in Word](docs/AI-Gatekeeper-Solution-Document.docx)
 - [Solution document in PDF](docs/AI-Gatekeeper-Solution-Document.pdf)
+- [Combined product, architecture and app demo](docs/AI-Gatekeeper-Complete-Overview-and-Demo.mp4) (8:54, 2560 × 1440, current version)
+- [Combined video transcript](docs/AI-Gatekeeper-Complete-Overview-and-Demo-transcript.txt) and [chapter timings](docs/AI-Gatekeeper-Complete-Overview-and-Demo-chapters.json)
+- [Agentic workflow visual](docs/AI-Gatekeeper-Agentic-Workflow.png)
 - [Product and architecture overview video](docs/AI-Gatekeeper-Product-Architecture-Overview.mp4) (revised business overview)
 - [App walkthrough video](docs/AI-Gatekeeper-App-Walkthrough.mp4) (revised feature tour and three use case demonstrations)
 
@@ -108,3 +111,5 @@ The narrated walkthrough uses edited screenshots captured from the running appli
 Media source scripts and original app captures are included. Media generation uses Pillow, imageio-ffmpeg, edge-tts, ReportLab and PyMuPDF; the script currently uses macOS Arial fonts. These optional dependencies are separate from the application runtime.
 
 The revised product video begins with business context and constraints, explains the ReAct-style live-agent design, maps models/tools/internal and external data, and connects technology layers to validation use cases. The revised walkthrough shows a fresh interactive session with the larger-font UI, edited into action/result sequences. Both distinguish tested rule-based workflow behavior from unverified live model integrations.
+
+The combined video supersedes the separate videos. A persistent workflow highlights the active stage throughout the product explanation and app demonstration. Model and tool calls, pause/resume branches, human decisions and required LangSmith observability appear in the architecture. LangSmith is a required target-design and deployment-validation component; the recorded local demo has no live model or LangSmith connection. The walkthrough uses native-resolution app captures with focused closeups, and closes with a thank-you. Download the MP4 and view full-screen for best readability.

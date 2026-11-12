@@ -1,0 +1,59 @@
+Welcome to AI Gatekeeper
+Welcome to AI Gatekeeper. Healthcare teams want AI to help staff find policies, draft patient communications and support clinical workflows. Governance teams need to understand the purpose, data, tooling and oversight before deciding whether a proposal can proceed. This application organizes that work into the five stages you see here: intake, evidence, risk and controls, human review, and decision. We will keep returning to this visual, then follow the same path in the application.
+
+Business friction and constraints
+Start on the left of the workflow. In our fictional healthcare scenario, requests arrive with incomplete context and scattered documents. Reviewers repeat questions, wait for evidence and struggle to reconstruct decisions. Sensitive data and clinical consequences make those gaps important. Structured intake captures the owner, purpose, tool and declared data class. The evidence stage checks required artifacts and versions. Missing inputs lead to a visible pause, rather than an invented answer.
+
+Workflow branches preserve progress
+Now follow the two branches beneath evidence and risk. Missing artifacts pause the case until evidence arrives. A tools register outage gets two attempts, then waits for an explicit retry. Successful checks prepare findings, controls and review routes. The right side remains a human handoff. A reviewer can approve, reject or request changes, which sends the case back for reassessment. LangGraph preserves state across these transitions. Approval does not trigger deployment.
+
+ReAct connects model and tool calls
+The lower loop explains the agentic design. In live mode, a specialist model considers the case, selects an allowed tool, observes the returned result and either continues or prepares a response. This is the ReAct pattern, implemented with LangChain create agent loops inside the LangGraph workflow. Three specialists support intake, risk and review preparation. Calls and iterations are bounded. The model cannot waive required controls or approve a case. The recorded application uses deterministic rules and real local tools; live model execution still needs validation.
+
+Models tools and governed data
+The model supports tool selection and advisory synthesis, with GPT four point one mini as the configured default. The three read only tools inspect evidence, look up approved tooling and retrieve exact policy clauses. Internal sources provide the organization’s rules, controls and case records. External vendor terms and assurance reports would support real review, while HHS and NIST guidance provides background. This build uses synthetic catalog data and text evidence, not live external connectors. Source versions and human content verification remain essential.
+
+Technology layers serve the workflow
+Read the technology stack through this same workflow. Next.js and React provide the shared workspace. FastAPI validates actions and enforces decision gates. LangGraph manages state, branches and human interrupts. LangChain provides tool interfaces and model loops. SQLite stores cases and durable checkpoints. LangSmith is a required architecture component, not an optional add on. Before deployment, its traces must be connected and verified alongside authenticated roles, protected storage and independently attributable approvals.
+
+Observability follows every handoff
+The purple layer follows every stage. The target LangSmith trace links the workflow to model calls, tool inputs and outputs, failures, latency and token usage when models run. Human audit records separately capture decisions and rationale. Observability explains execution; it does not replace governance evidence. In the recorded build, local events are working, but LangSmith delivery and live model calls have not been credential validated. We show that status honestly while making tracing mandatory for deployment readiness.
+
+From design to the application
+Let us move directly from this diagram into the application. We will follow the same stages in three cases. Staff knowledge demonstrates a complete review. Patient message drafting pauses for missing evidence. Discharge instruction drafting recovers from a failed tool. Watch how case state, source citations and tool observations lead to the next step. The following close ups are edited captures of actual app interactions with synthetic data, so the actions and their results are easy to read.
+
+Feature tour  |  Dashboard and intake
+The dashboard brings the portfolio and review status together. New assessment opens the intake form. The requester declares an owner, purpose, data classification, tool and system version. Clinical use, patient facing output and external processing are explicit flags. These declarations determine later evidence requirements. We close the form and use seeded cases for this demonstration.
+
+Feature tour  |  Sources and portfolio
+The policy library exposes versioned internal rules and the approved tools register. This makes the assessment basis visible to reviewers. The assessment portfolio supports searching and status filtering. Inside each case, Assessment, Evidence, Decision and Activity organize the work. Monitoring and Audit provide cross case visibility, which we will inspect after running the scenarios.
+
+Use case 1  |  Run the staff assistant assessment
+Our first proposal is a staff policy knowledge assistant. It uses internal data and an approved tool, with oversight evidence already present. We select Run assessment. The saved workflow inspects evidence, checks the register and maps policy requirements. The result is low risk and ready for AI Governance review. The business value is a prepared review packet, not automatic approval.
+
+Observe the actual tool results
+Open Activity to see what actually executed. Evidence inspection found one matching evidence kind and no gaps. Lookup tool returned Northstar Assist as approved. The risk step produced a finding grounded in versioned policy. Review preparation then paused for a human decision. These are recorded tool results and state transitions, not generated explanations of hidden model reasoning.
+
+Human handoff  |  Verify and decide
+The Business Requester cannot approve. Switching to Governance Reviewer enables evidence verification and sign off. We check the oversight record, attest AI Governance review and enter a scope specific rationale. Approve scope records the outcome and preserves the verified checks. Export packet is available for the case record. The approval concerns this synthetic proposal and does not deploy any system.
+
+Use case 2  |  Patient messages need evidence
+Patient message drafting introduces protected health information, patient facing output and an external processor. Running the assessment now produces a different route. The workflow pauses for BAA, evaluation and monitoring evidence. It retains the case rather than filling gaps with assumptions. This is a practical agentic behavior: stop, explain the missing inputs and wait for the next authorized action.
+
+Supply evidence and resume
+The Evidence workspace identifies missing artifacts. We select Add demo evidence to attach explicitly synthetic fixtures. Their metadata includes author, date and system version. Resume assessment rechecks completeness and continues the same case. It now reaches high risk review with AI Governance, Privacy and Security or Vendor Risk. Evidence presence does not remove the human decision gate.
+
+Inspect the source behind a finding
+Opening the policy citation reveals the exact fictional clause behind the finding. The reviewer can compare the requirement with the submitted evidence. This connects the result to a source instead of asking the reviewer to trust a fluent summary. The current evidence tool checks metadata and version, so people still need to verify content and scope.
+
+Use case 3  |  A tool becomes unavailable
+Discharge instruction drafting has complete evidence, but its tools register deliberately fails. We run the assessment and open Activity. Two lookup attempts fail, then the workflow pauses with the case saved. It does not interpret an unavailable register as approval. This scenario tests bounded retries and a visible recovery path for the person operating the system.
+
+Retry and inspect preserved history
+Select Retry lookup. The synthetic outage clears, and the same checkpoint resumes. The trace keeps both failed attempts, then adds the resume event, successful lookup, high risk assessment and review preparation. We can explain what changed and why the workflow continued. A human decision is still required after recovery.
+
+Monitoring audit and the model boundary
+Monitoring shows eighteen workflow events, two failed tool attempts and one human decision. The audit view records actions and rationale. Local traces demonstrate actual execution in this build. LangSmith is required in the architecture, but this recorded session is not yet connected to it. Before deployment, verify end to end trace delivery for workflow, model and tool calls. Across these cases, we have seen saved state, evidence handoffs, bounded retries and human decisions.
+
+Thank you
+Thank you for exploring AI Gatekeeper. We have connected the business problem, agentic architecture and real application behavior through one workflow. Our next milestone is user validation, live model and LangSmith verification, followed by deployment readiness.

@@ -25,7 +25,7 @@ db.execute('CREATE TABLE IF NOT EXISTS cases (id TEXT PRIMARY KEY, payload TEXT 
 db.execute('CREATE TABLE IF NOT EXISTS audit (seq INTEGER PRIMARY KEY AUTOINCREMENT, case_id TEXT, at TEXT, actor TEXT, action TEXT, details TEXT)')
 for c in seeds(): db.execute('INSERT OR IGNORE INTO cases(id,payload) VALUES(?,?)',(c['id'],json.dumps(c)))
 db.commit()
-app=FastAPI(title='AI Gatekeeper Healthcare Demo',version='0.1.0')
+app=FastAPI(title='AI Gatekeeper Agent Healthcare Demo',version='0.1.0')
 
 class Action(BaseModel):
     revision:int
